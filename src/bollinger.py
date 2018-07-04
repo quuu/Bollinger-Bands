@@ -31,10 +31,13 @@ def exponentialMovingAverage(closeList):
 
     return toReturn
 
+
 def simpleMovingAverage(closeList):
     current=0
     terms=10
     count=0
+
+    #simple queue implementation
     toRemove=deque([])
     toReturn=[]
     for i in closeList:
@@ -52,36 +55,57 @@ def simpleMovingAverage(closeList):
 
 
 
+
 def standardDeviation(mean, closeList):
+
+    #keep track of on going average
     variance=0
+
+    #to account for the NAN values
     terms=10
     count=0
+
+    #simple queue implementation
     toRemove=deque([])
     toReturn=[]
 
+    #main loop
     for i,j in zip(mean, closeList):
         if(count<terms):
             toReturn.append(float('nan'))
-            variance+=(j)**2
-            toRemove.append((j)**2)
+            #bit of a cheaty solution to getting
+            #the variance for the first 10 terms?
+            variance+=(closeList[closeList.index(j)+1]-j)**2
+            toRemove.append((closeList[closeList.index(j)+1]-j)**2)
             count+=1
         else:
             toReturn.append((variance/count)**(0.5))
             variance=variance-toRemove.popleft()+((i-j)**2)
             toRemove.append((i-j)**2)
 
-    for i in toReturn:
-        print(i)
     return toReturn
 
-def lowerBound(mean):
+
+#removed in the future?
+#can just subtract mean deviation list from mean list?
+def lowerBound(mean,deviation):
     toReturn=[]
-    for i in mean:
+    for i,j in zip(mean,deviation):
         #weird, but effective way to check for nan
         if(i!=i):
             toReturn.append(float('nan'))
         else:
-            toReturn.append(i)
+            toReturn.append(i-j)
 
-def higherBound():
-    a=1
+    return toReturn
+
+#removed in the future?
+#can just add mean deviation list from mean list?
+def higherBound(mean,deviation):
+    toReturn=[]
+    for i,j in zip(mean,deviation):
+        if(i!=i):
+            toReturn.append(float('nan'))
+        else:
+            toReturn.append(i+j)
+    return toReturn
