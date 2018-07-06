@@ -73,6 +73,7 @@ def standardDeviation(mean, closeList):
     for i,j in zip(mean, closeList):
         if(count<terms):
             toReturn.append(float('nan'))
+
             #bit of a cheaty solution to getting
             #the variance for the first 10 terms?
             variance+=(closeList[closeList.index(j)+1]-j)**2

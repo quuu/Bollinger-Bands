@@ -123,8 +123,14 @@ if __name__=="__main__":
     deviation=CALC.standardDeviation(mean,closeList)
 
     #ADD PROMPT ABOUT WHETHER TO DISPLAY HIGH AND LOW OR NOT
-    #highLow = str(input("Do you want to display the highest and lowest of the days?(Default: No)"))
+    highLow = str(input("Do you want to display the highest and lowest of the days?(Default: No)"))
 
     #plot the data
-    plotData(closeList,mean,CALC.lowerBound(mean,deviation),
+
+    if(highLow == "Yes"):
+        plotData(closeList,mean,CALC.lowerBound(mean,deviation),
             CALC.higherBound(mean,deviation), dateList, highList, lowList)
+
+    else:
+        plotData(closeList,mean,CALC.lowerBound(mean,deviation),
+            CALC.higherBound(mean,deviation), dateList)
