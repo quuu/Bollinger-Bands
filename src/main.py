@@ -55,7 +55,7 @@ def plotData(closeList, mean, lowerBand, higherBand, dateList, highList=[], lowL
 
     layout=go.Layout(
 
-        title="THSI IS A CHART",
+        title="Main Chart",
         xaxis=dict(
             showline=True,
             showgrid=True,
