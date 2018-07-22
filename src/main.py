@@ -29,28 +29,28 @@ def plotData(closeList, mean, lowerBand, higherBand, dateList, highList=[], lowL
             y=closeList,
             line=dict(color='rgba(255,0,0,1)'),
             name="Close",
-            showlegend=True
+            #showlegend=True
     )
     traceMean=go.Scatter(
             x=dateList,
             y=mean,
-            line=dict(color='rgba(0,0,0,0.6'),
+            line=dict(color='rgba(0,0,0,0.6)'),
             name="Mean",
-            showlegend=True
+            #showlegend=True
     )
     traceLowBand=go.Scatter(
             x=dateList,
             y=lowerBand,
             line=dict(color='rgba(0,0,0,0.4)'),
             name="Lower Band",
-            showlegend=True
+            #showlegend=True
     )
     traceHighBand=go.Scatter(
             x=dateList,
             y=higherBand,
             line=dict(color='rgba(0,0,0,0.4)'),
             name="Higher Band",
-            showlegend=True
+            #showlegend=True
     )
 
     layout=go.Layout(
@@ -60,7 +60,7 @@ def plotData(closeList, mean, lowerBand, higherBand, dateList, highList=[], lowL
             showline=True,
             showgrid=True,
             showticklabels=True,
-            autotick=True,
+      #      autotick=True,
         ),
         yaxis=dict(
             showgrid=True,
@@ -69,7 +69,7 @@ def plotData(closeList, mean, lowerBand, higherBand, dateList, highList=[], lowL
             showticklabels=True,
         ),
 
-        showlegend=True,
+        #showlegend=True,
     )
     if(len(highList)!=0 and len(lowList)!=0):
         traceHigh=go.Scatter(
@@ -78,7 +78,7 @@ def plotData(closeList, mean, lowerBand, higherBand, dateList, highList=[], lowL
                 fillcolor='rgba(255,0,0,0.2)',
                 line=dict(color='rgba(255,0,0,0.2)'),
                 name="High",
-                showlegend=True
+                #showlegend=True
         )
 
         traceLow=go.Scatter(
@@ -87,7 +87,7 @@ def plotData(closeList, mean, lowerBand, higherBand, dateList, highList=[], lowL
                fillcolor='rgba(0,255,0,0.2)',
                line=dict(color='rgba(0,0,255,0.2)'),
                name="Low",
-               showlegend=True
+               #showlegend=True
         )
         data=[traceHigh, traceLow,traceMean,traceClose,traceLowBand, traceHighBand]
     else:
